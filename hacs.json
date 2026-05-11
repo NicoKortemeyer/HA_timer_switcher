@@ -1,0 +1,6 @@
+{
+  "name": "Once Timer",
+  "render_readme": true,
+  "filename": "once-timer-card.js",
+  "homeassistant": "2024.1.0"
+}

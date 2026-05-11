@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Once Timer",
+        "description": "Add a Once Timer instance to Home Assistant. No configuration required."
+      }
+    },
+    "abort": {
+      "already_configured": "Once Timer is already configured."
+    }
+  },
+  "entity": {
+    "button": {
+      "schedule_once": { "name": "Schedule Once" }
+    },
+    "select": {
+      "target_entity": { "name": "Target Entity" },
+      "action": { "name": "Action" }
+    },
+    "number": {
+      "delay_minutes": { "name": "Delay (minutes)" }
+    },
+    "datetime": {
+      "run_at": { "name": "Run At" }
+    },
+    "sensor": {
+      "next_run": { "name": "Next Run" },
+      "timer_state": { "name": "Timer State" }
+    }
+  }
+}
