@@ -49,4 +49,5 @@ jobs:
             --repo NicoKortemeyer/once-timer-card \
             --title "${{ github.ref_name }}" \
             --notes "$RELEASE_NOTES" \
+            card-deploy/once-timer-card.js \
             2>/dev/null || echo "Release already exists, skipping."
