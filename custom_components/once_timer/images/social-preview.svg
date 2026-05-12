@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <!-- Background -->
+  <rect width="1280" height="640" fill="#1565C0"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5" opacity="0.07"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+
+  <!-- Decorative circle backdrop -->
+  <circle cx="260" cy="320" r="220" fill="white" opacity="0.06"/>
+  <circle cx="260" cy="320" r="170" fill="white" opacity="0.06"/>
+
+  <!-- Icon: clock -->
+  <circle cx="260" cy="300" r="120" fill="none" stroke="white" stroke-width="10" opacity="0.9"/>
+  <!-- Hour markers -->
+  <line x1="260" y1="185" x2="260" y2="205" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <line x1="260" y1="395" x2="260" y2="415" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <line x1="145" y1="300" x2="165" y2="300" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <line x1="355" y1="300" x2="375" y2="300" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <!-- Hour hand -->
+  <line x1="260" y1="300" x2="211" y2="251" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <!-- Minute hand -->
+  <line x1="260" y1="300" x2="260" y2="210" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <!-- Center dot -->
+  <circle cx="260" cy="300" r="12" fill="white"/>
+
+  <!-- Badge: checkmark -->
+  <circle cx="358" cy="398" r="52" fill="#43A047"/>
+  <polyline points="334,398 350,416 384,382" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Text -->
+  <text x="480" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="88" font-weight="700" fill="white" letter-spacing="-2">Once Timer</text>
+  <text x="484" y="355" font-family="system-ui, -apple-system, sans-serif" font-size="38" fill="white" opacity="0.75">Home Assistant Integration</text>
+
+  <!-- Bottom tag -->
+  <rect x="484" y="420" width="300" height="52" rx="26" fill="white" opacity="0.15"/>
+  <text x="634" y="453" font-family="system-ui, -apple-system, sans-serif" font-size="26" fill="white" text-anchor="middle" font-weight="500">HACS · Custom Integration</text>
+</svg>

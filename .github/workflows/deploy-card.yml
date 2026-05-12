@@ -1,0 +1,52 @@
+name: Build & Deploy Card
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build card and push to once-timer-card
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: cd lovelace-card && npm ci
+
+      - name: Build card
+        run: cd lovelace-card && npm run build
+
+      - name: Push to once-timer-card repo
+        env:
+          CARD_REPO_PAT: ${{ secrets.CARD_REPO_PAT }}
+        run: |
+          git clone https://x-access-token:${CARD_REPO_PAT}@github.com/NicoKortemeyer/once-timer-card.git card-deploy
+          cp lovelace-card/dist/once-timer-card.js card-deploy/once-timer-card.js
+          cd card-deploy
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add once-timer-card.js
+          git diff --staged --quiet && echo "No changes." && exit 0
+          git commit -m "chore: update card build (Once_Timer ${{ github.ref_name }})"
+          git push
+
+      - name: Create release in once-timer-card repo
+        env:
+          CARD_REPO_PAT: ${{ secrets.CARD_REPO_PAT }}
+          GH_TOKEN: ${{ secrets.CARD_REPO_PAT }}
+        run: |
+          RELEASE_NOTES=$(gh release view "${{ github.ref_name }}" \
+            --repo NicoKortemeyer/Once_Timer \
+            --json body --jq '.body')
+          gh release create "${{ github.ref_name }}" \
+            --repo NicoKortemeyer/once-timer-card \
+            --title "${{ github.ref_name }}" \
+            --notes "$RELEASE_NOTES" \
+            2>/dev/null || echo "Release already exists, skipping."

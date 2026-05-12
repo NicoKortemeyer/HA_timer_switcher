@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "lib": ["ES2021", "DOM"],
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,10 @@
+custom_components/once_timer/__pycache__/
+custom_components/once_timer/*.pyc
+lovelace-card/node_modules/
+lovelace-card/dist/
+.storage/
+*.egg-info/
+.pytest_cache/
+__pycache__/
+*.pyc
+.DS_Store
