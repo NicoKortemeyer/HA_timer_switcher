@@ -1,7 +1,7 @@
 {
   "domain": "once_timer",
   "name": "Once Timer",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "config_flow": true,
   "documentation": "https://github.com/NicoKortemeyer/Once_Timer",
   "issue_tracker": "https://github.com/NicoKortemeyer/Once_Timer/issues",
