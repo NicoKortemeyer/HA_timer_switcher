@@ -74,14 +74,16 @@ export class OnceTimerCard extends LitElement {
   }
 
   private _getTimerData(): { schedules: Schedule[]; history: Schedule[]; presets: Preset[] } {
-    const entry = Object.values(this.hass.states).find(
-      (e) => e.entity_id.includes("once_timer")
-    );
-    const attr = entry?.attributes ?? {};
+    const merged: Record<string, unknown> = {};
+    for (const entry of Object.values(this.hass.states)) {
+      if (entry.entity_id.includes("once_timer")) {
+        Object.assign(merged, entry.attributes);
+      }
+    }
     return {
-      schedules: Array.isArray(attr["schedules"]) ? (attr["schedules"] as Schedule[]) : [],
-      history: Array.isArray(attr["history"]) ? (attr["history"] as Schedule[]) : [],
-      presets: Array.isArray(attr["presets"]) ? (attr["presets"] as Preset[]) : [],
+      schedules: Array.isArray(merged["schedules"]) ? (merged["schedules"] as Schedule[]) : [],
+      history: Array.isArray(merged["history"]) ? (merged["history"] as Schedule[]) : [],
+      presets: Array.isArray(merged["presets"]) ? (merged["presets"] as Preset[]) : [],
     };
   }
 
